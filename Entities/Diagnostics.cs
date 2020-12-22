@@ -32,7 +32,7 @@ namespace TwoWayAccepter.Entities
 
         public string CurrentSymbol
         {
-            get { return "Current Symbol: " +_currentSymbol; }
+            get { return "Tape head at: " +_currentSymbol; }
             set { _currentSymbol = value; NotifyPropertyChanged("CurrentSymbol"); }
         }
 

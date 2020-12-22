@@ -73,20 +73,20 @@ namespace TwoWayAccepter
             {
                 _initialState = value; 
                 Diagnostics.CurrentStateName = _initialState;
-                Diagnostics.PossibleNextStates = "Possible Next States: ";
+                //Diagnostics.PossibleNextStates = "Possible Next States: ";
 
-                var nextPossibleStates = new List<State>();
-                nextPossibleStates = States.Where(s => s.StateName == _initialState).ToList();
+                //var nextPossibleStates = new List<State>();
+                //nextPossibleStates = States.Where(s => s.StateName == _initialState).ToList();
 
-                for (int j = 0; j < nextPossibleStates.Count; j++)
-                {
-                    Diagnostics.PossibleNextStates += nextPossibleStates[j].DestinationState;
+                //for (int j = 0; j < nextPossibleStates.Count; j++)
+                //{
+                //    Diagnostics.PossibleNextStates += nextPossibleStates[j].DestinationState;
 
-                    if (j >= 0 && j < (nextPossibleStates.Count - 1) && !string.IsNullOrEmpty(nextPossibleStates[j].DestinationState))
-                    {
-                        Diagnostics.PossibleNextStates += ", ";
-                    }
-                }
+                //    if (j >= 0 && j < (nextPossibleStates.Count - 1) && !string.IsNullOrEmpty(nextPossibleStates[j].DestinationState))
+                //    {
+                //        Diagnostics.PossibleNextStates += ", ";
+                //    }
+                //}
                 NotifyPropertyChanged("InitialState"); }
         }
 

@@ -35,7 +35,7 @@ namespace TwoWayAccepter
 
             Dispatcher.Invoke(() =>
             {
-                Task.Run(() => { Thread.Sleep(1000); HighlightCurrentStateInDatagrid(); }) ; 
+                Task.Run(() => { Thread.Sleep(1000); HighlightCurrentStateInDatagrid(); });
             });
         }
 
@@ -69,38 +69,42 @@ namespace TwoWayAccepter
             //_viewModel.InitialState = "1";
 
             // test case 3
-            _viewModel.States.Add(new State() { StateName = "1", TransitionSymbol = "a", DestinationState = "2", ScanDirection = "Right" });
-            _viewModel.States.Add(new State() { StateName = "1", TransitionSymbol = "b", DestinationState = "1", ScanDirection = "Right" });
-            _viewModel.States.Add(new State() { StateName = "1", TransitionSymbol = "#", DestinationState = "3", ScanDirection = "Right" });
-            _viewModel.States.Add(new State() { StateName = "2", TransitionSymbol = "a", DestinationState = "1", ScanDirection = "Right" });
-            _viewModel.States.Add(new State() { StateName = "2", TransitionSymbol = "b", DestinationState = "2", ScanDirection = "Right" });
-            _viewModel.States.Add(new State() { StateName = "3", TransitionSymbol = "a", DestinationState = "3", ScanDirection = "Left" });
-            _viewModel.States.Add(new State() { StateName = "3", TransitionSymbol = "b", DestinationState = "3", ScanDirection = "Left" });
-            _viewModel.States.Add(new State() { StateName = "3", TransitionSymbol = "#", DestinationState = "4", ScanDirection = "Left" });
-            _viewModel.States.Add(new State() { StateName = "4", TransitionSymbol = "a", DestinationState = "4", ScanDirection = "Right" });
-            _viewModel.States.Add(new State() { StateName = "4", TransitionSymbol = "b", DestinationState = "5", ScanDirection = "Right" });
-            _viewModel.States.Add(new State() { StateName = "5", TransitionSymbol = "a", DestinationState = "5", ScanDirection = "Right" });
-            _viewModel.States.Add(new State() { StateName = "5", TransitionSymbol = "b", DestinationState = "4", ScanDirection = "Right" });
-            _viewModel.States.Add(new State() { StateName = "5", TransitionSymbol = "#", DestinationState = "ACCEPT", ScanDirection = "Right" });
-            _viewModel.States.Add(new State() { StateName = "ACCEPT", TransitionSymbol = "", DestinationState = "", ScanDirection = "" });
-            _viewModel.States.Add(new State() { StateName = "REJECT", TransitionSymbol = "", DestinationState = "", ScanDirection = "" });
+            //_viewModel.States.Add(new State() { StateName = "1", K = "a", DestinationState = "2", Module = "Right" });
+            //_viewModel.States.Add(new State() { StateName = "1", K = "b", DestinationState = "1", Module = "Right" });
+            //_viewModel.States.Add(new State() { StateName = "1", K = "#", DestinationState = "3", Module = "Right" });
+            //_viewModel.States.Add(new State() { StateName = "2", K = "a", DestinationState = "1", Module = "Right" });
+            //_viewModel.States.Add(new State() { StateName = "2", K = "b", DestinationState = "2", Module = "Right" });
+            //_viewModel.States.Add(new State() { StateName = "3", K = "a", DestinationState = "3", Module = "Left" });
+            //_viewModel.States.Add(new State() { StateName = "3", K = "b", DestinationState = "3", Module = "Left" });
+            //_viewModel.States.Add(new State() { StateName = "3", K = "#", DestinationState = "4", Module = "Left" });
+            //_viewModel.States.Add(new State() { StateName = "4", K = "a", DestinationState = "4", Module = "Right" });
+            //_viewModel.States.Add(new State() { StateName = "4", K = "b", DestinationState = "5", Module = "Right" });
+            //_viewModel.States.Add(new State() { StateName = "5", K = "a", DestinationState = "5", Module = "Right" });
+            //_viewModel.States.Add(new State() { StateName = "5", K = "b", DestinationState = "4", Module = "Right" });
+            //_viewModel.States.Add(new State() { StateName = "5", K = "#", DestinationState = "ACCEPT", Module = "Right" });
+            //_viewModel.States.Add(new State() { StateName = "ACCEPT", K = "", DestinationState = "", Module = "" });
+            //_viewModel.States.Add(new State() { StateName = "REJECT", K = "", DestinationState = "", Module = "" });
+
+            // test case 4
+            _viewModel.States.Add(new State() { StateName = "1", Module = "shR-2" });
+            //_viewModel.States.Add(new State() { StateName = "REJECT", K = "", DestinationState = "", Module = "" });
 
 
-            _viewModel.Omega = "#abaabba#";
+            _viewModel.Omega = "#123#456#";
             _viewModel.InitialState = "1";
             _viewModel.Diagnostics.CurrentSymbol = _viewModel.Omega[0].ToString();
         }
 
         private void Rebind()
         {
-            i = 1;
+            i = 0;
             _viewModel = new ViewModel();
             this.DataContext = _viewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.States.Add(new State() { StateName = "*state name*", TransitionSymbol = "*symbol*", DestinationState = "*destination*", ScanDirection="*direction*"});
+            _viewModel.States.Add(new State() { StateName = "*state name*", Module = "*module*" });
         }
 
         /// <summary>
@@ -126,11 +130,7 @@ namespace TwoWayAccepter
                 MessageBox.Show("Initial state cannot be blank. Enter an initial state.");
                 return;
             }
-            if (_viewModel.States.Where(state => !(state.StateName.ToUpper() == "ACCEPT" || state.StateName.ToUpper() == "REJECT") && (string.IsNullOrEmpty(state.DestinationState) || string.IsNullOrEmpty(state.ScanDirection) || string.IsNullOrEmpty(state.StateName) || string.IsNullOrEmpty(state.TransitionSymbol)) ).ToList().Count > 0)
-            {
-                MessageBox.Show("Some states have unexpected empty values.");
-                return;
-            }
+
             #endregion
 
             _viewModel.Playing = true;
@@ -159,12 +159,12 @@ namespace TwoWayAccepter
                     }
 
 
-                    EvaluateNextState(symbol);
+                    //EvaluateNextState(symbol);
                     UpdateProcessedSymbolLabel(_viewModel.Omega.Substring(1, i));
                     UpdateCurrentStateLabel();
                     HighlightCurrentStateInDatagrid();
-                    UpdateNextPossibleStates();
-                    IncrementOrDecrementOmegaIndex();
+                    //UpdateNextPossibleStates();
+                    //IncrementOrDecrementOmegaIndex();
                     DisplayAcceptOrRejectMessage();
                     Thread.Sleep(200);
                 }
@@ -199,11 +199,7 @@ namespace TwoWayAccepter
                 MessageBox.Show("Initial state cannot be blank. Enter an initial state.");
                 return;
             }
-            if (_viewModel.States.Where(state => !(state.StateName.ToUpper() == "ACCEPT" || state.StateName.ToUpper() == "REJECT") && (string.IsNullOrEmpty(state.DestinationState) || string.IsNullOrEmpty(state.ScanDirection) || string.IsNullOrEmpty(state.StateName) || string.IsNullOrEmpty(state.TransitionSymbol))).ToList().Count > 0)
-            {
-                MessageBox.Show("Some states have unexpected empty values.");
-                return;
-            }
+
             #endregion
 
             SetInitialState();
@@ -228,30 +224,30 @@ namespace TwoWayAccepter
             UpdateProcessedSymbolLabel(_viewModel.Omega.Substring(1, i));
             UpdateCurrentStateLabel();
             HighlightCurrentStateInDatagrid();
-            UpdateNextPossibleStates();
-            IncrementOrDecrementOmegaIndex();
+            //UpdateNextPossibleStates();
+            //IncrementOrDecrementOmegaIndex();
             DisplayAcceptOrRejectMessage();
 
             _viewModel.Diagnostics.CurrentStateName = _viewModel.Diagnostics.CurrentState.StateName;
         }
 
-        private void UpdateNextPossibleStates()
-        {
-            _viewModel.Diagnostics.PossibleNextStates = "Possible Next States: ";
+        //private void UpdateNextPossibleStates()
+        //{
+        //    _viewModel.Diagnostics.PossibleNextStates = "Possible Next States: ";
 
-            var nextPossibleStates = new List<State>();
-            nextPossibleStates = _viewModel.States.Where(s => s.StateName == _viewModel.Diagnostics.CurrentState.StateName).ToList();
-            
-            for (int j = 0; j < nextPossibleStates.Count; j++)
-            {
-                _viewModel.Diagnostics.PossibleNextStates += nextPossibleStates[j].DestinationState;
-                
-                if (j >= 0 && j < (nextPossibleStates.Count - 1) && !string.IsNullOrEmpty(nextPossibleStates[j].DestinationState))
-                {
-                    _viewModel.Diagnostics.PossibleNextStates += ", ";
-                }
-            }
-        }
+        //    var nextPossibleStates = new List<State>();
+        //    nextPossibleStates = _viewModel.States.Where(s => s.StateName == _viewModel.Diagnostics.CurrentState.StateName).ToList();
+
+        //    for (int j = 0; j < nextPossibleStates.Count; j++)
+        //    {
+        //        _viewModel.Diagnostics.PossibleNextStates += nextPossibleStates[j].DestinationState;
+
+        //        if (j >= 0 && j < (nextPossibleStates.Count - 1) && !string.IsNullOrEmpty(nextPossibleStates[j].DestinationState))
+        //        {
+        //            _viewModel.Diagnostics.PossibleNextStates += ", ";
+        //        }
+        //    }
+        //}
 
         private void HighlightCurrentStateInDatagrid()
         {
@@ -259,7 +255,7 @@ namespace TwoWayAccepter
             {
                 Dispatcher.Invoke(() =>
                 {
-                    
+
                     var stateObj = _viewModel.States.Where(name => name.StateName.ToUpper() == _viewModel.Diagnostics._currentStateName.ToUpper()).FirstOrDefault();
                     if (stateObj == null)
                     {
@@ -281,7 +277,7 @@ namespace TwoWayAccepter
             }
         }
 
-      
+
 
         private void UpdateCurrentStateLabel()
         {
@@ -293,7 +289,7 @@ namespace TwoWayAccepter
 
                 }
             }
-            catch 
+            catch
             {
 
             }
@@ -339,28 +335,28 @@ namespace TwoWayAccepter
             _viewModel.Diagnostics.ProcessedSymbols = subStr;
         }
 
-        private void IncrementOrDecrementOmegaIndex()
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(_viewModel.Diagnostics.CurrentState.ScanDirection))
-                {
-                    return;
-                }
-                if (_viewModel.Diagnostics.CurrentState.ScanDirection.ToUpper() == "RIGHT")
-                {
-                    i++;
-                }
-                else if (_viewModel.Diagnostics.CurrentState.ScanDirection.ToUpper() == "LEFT")
-                {
-                    i--;
-                }
-            }
-            catch
-            {
-                // swallow
-            }
-        }
+        //private void IncrementOrDecrementOmegaIndex()
+        //{
+        //    try
+        //    {
+        //        if (string.IsNullOrEmpty(_viewModel.Diagnostics.CurrentState.Module))
+        //        {
+        //            return;
+        //        }
+        //        if (_viewModel.Diagnostics.CurrentState.Module.ToUpper() == "RIGHT")
+        //        {
+        //            i++;
+        //        }
+        //        else if (_viewModel.Diagnostics.CurrentState.Module.ToUpper() == "LEFT")
+        //        {
+        //            i--;
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        // swallow
+        //    }
+        //}
 
         private void EvaluateNextState(string symbol)
         {
@@ -368,10 +364,48 @@ namespace TwoWayAccepter
 
             // todo: handle how to transition to next state if current state has many transitions.
             nextPossibleStates = _viewModel.States.Where(s => s.StateName == _viewModel.Diagnostics.CurrentState.StateName).ToList();
-            var targetStateName = nextPossibleStates.Where(state => state.TransitionSymbol == symbol).Select(s => s.DestinationState).FirstOrDefault();
-            State nextState = _viewModel.States.Where(s => s.StateName == targetStateName).FirstOrDefault();
+            //var targetStateName = nextPossibleStates.Where(state => state.K == symbol).Select(s => s.DestinationState).FirstOrDefault();
+            if (_viewModel.Diagnostics.CurrentState.Module.Contains("const"))
+            {
+                var value = _viewModel.Diagnostics.CurrentState.Module.Split('-')[1];
+                _viewModel.Omega = _viewModel.Omega.Insert(i, value);
+            }
+            else if (_viewModel.Diagnostics.CurrentState.Module.Contains("shL"))
+            {
+                var value = _viewModel.Diagnostics.CurrentState.Module.Split('-')[1];
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    i--;
+                    if (_viewModel.Omega[i].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    if (int.Parse(value) == j)
+                    {
+                        break;
+                    }
+                }
+            }
+            else if (_viewModel.Diagnostics.CurrentState.Module.Contains("shR"))
+            {
+                var value = _viewModel.Diagnostics.CurrentState.Module.Split('-')[1];
+                for (int j = 0; j < int.Parse(value);)
+                {
+                    i++;
+                    if (_viewModel.Omega[i].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    if (int.Parse(value) == j)
+                    {
+                        break;
+                    }
+                }
+            }
+            _viewModel.Diagnostics.CurrentSymbol = _viewModel.Omega[i].ToString();
+            //State nextState = _viewModel.States.Where(s => s.StateName == targetStateName).FirstOrDefault();
 
-            _viewModel.Diagnostics.CurrentState = nextState;
+            //_viewModel.Diagnostics.CurrentState = nextState;
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
