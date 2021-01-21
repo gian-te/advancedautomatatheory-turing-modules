@@ -42,14 +42,14 @@ namespace TwoWayAccepter
 
         private void Init()
         {
-            // test case 1
-            _viewModel.States.Add(new State() { StateName = "1", Module = "shR-2" });
-            _viewModel.States.Add(new State() { StateName = "2", Module = "shL-1" });
-            _viewModel.States.Add(new State() { StateName = "3", Module = "shR-1" });
-            _viewModel.States.Add(new State() { StateName = "4", Module = "const-5" });
-            _viewModel.States.Add(new State() { StateName = "5", Module = "copy-2" });
-            _viewModel.States.Add(new State() { StateName = "6", Module = "move 1,1" });
-            _viewModel.Omega = "#111#000#";
+            // test case 1 - random
+            //_viewModel.States.Add(new State() { StateName = "1", Module = "shR-2" });
+            //_viewModel.States.Add(new State() { StateName = "2", Module = "shL-1" });
+            //_viewModel.States.Add(new State() { StateName = "3", Module = "shR-1" });
+            //_viewModel.States.Add(new State() { StateName = "4", Module = "const-1" });
+            //_viewModel.States.Add(new State() { StateName = "5", Module = "copy-2" });
+            //_viewModel.States.Add(new State() { StateName = "6", Module = "move 1,1" });
+            //_viewModel.Omega = "#111#000#";
 
             // test case 2 - swappy
             //_viewModel.States.Add(new State() { StateName = "1", Module = "shR-2" });
@@ -57,6 +57,33 @@ namespace TwoWayAccepter
             //_viewModel.States.Add(new State() { StateName = "3", Module = "shL-2" });
             //_viewModel.States.Add(new State() { StateName = "4", Module = "move 1,2" });
             //_viewModel.Omega = "#1111#11#";
+
+            // test case 3 - geometric series
+            _viewModel.States.Add(new State() { StateName = "1", Module = "const-1" });
+            _viewModel.States.Add(new State() { StateName = "2", Module = "shR-1" });
+            _viewModel.States.Add(new State() { StateName = "3", Module = "copy-1" });
+            _viewModel.States.Add(new State() { StateName = "4", Module = "const-2" });
+            _viewModel.States.Add(new State() { StateName = "5", Module = "shL-1" });
+            _viewModel.States.Add(new State() { StateName = "6", Module = "mult" });
+            // pattern
+            _viewModel.States.Add(new State() { StateName = "7", Module = "shR-1" });
+            _viewModel.States.Add(new State() { StateName = "8", Module = "copy-1" });
+            _viewModel.States.Add(new State() { StateName = "9", Module = "const-2" });
+            _viewModel.States.Add(new State() { StateName = "10", Module = "shL-1" });
+            _viewModel.States.Add(new State() { StateName = "11", Module = "mult" });
+            //
+            _viewModel.States.Add(new State() { StateName = "12", Module = "shR-1" });
+            _viewModel.States.Add(new State() { StateName = "13", Module = "copy-1" });
+            _viewModel.States.Add(new State() { StateName = "14", Module = "const-2" });
+            _viewModel.States.Add(new State() { StateName = "15", Module = "shL-1" });
+            _viewModel.States.Add(new State() { StateName = "16", Module = "mult" });
+            //
+            _viewModel.States.Add(new State() { StateName = "17", Module = "shR-1" });
+            _viewModel.States.Add(new State() { StateName = "18", Module = "copy-1" });
+            _viewModel.States.Add(new State() { StateName = "19", Module = "const-2" });
+            _viewModel.States.Add(new State() { StateName = "20", Module = "shL-1" });
+            _viewModel.States.Add(new State() { StateName = "21", Module = "mult" });
+            _viewModel.Omega = "####";
 
             _viewModel.InitialState = stateCounter.ToString();
             _viewModel.Diagnostics.CurrentSymbol = _viewModel.Omega[0].ToString();
@@ -427,18 +454,210 @@ namespace TwoWayAccepter
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("mult"))
             {
                 // mult logic here
+                var currentIndex = _viewModel.Diagnostics.OmegaIndex;
+                var count = 0;
+                var operand1 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand1 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+                var operand2 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand2 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+
+                // multiply
+                var product = int.Parse(operand1) * int.Parse(operand2);
+
+                _viewModel.Omega = _viewModel.Omega.Remove(currentIndex, count);
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
+                _viewModel.Omega = _viewModel.Omega.Insert(currentIndex + 1, product.ToString() + "#");
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("add"))
             {
                 // add logic here
+                var currentIndex = _viewModel.Diagnostics.OmegaIndex;
+                var count = 0;
+                var operand1 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand1 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+                var operand2 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand2 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+
+                // add
+                var product = int.Parse(operand1) + int.Parse(operand2);
+
+                _viewModel.Omega = _viewModel.Omega.Remove(currentIndex, count);
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
+                _viewModel.Omega = _viewModel.Omega.Insert(currentIndex + 1, product.ToString() + "#");
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("minus"))
             {
                 // minus logic here
+                var currentIndex = _viewModel.Diagnostics.OmegaIndex;
+                var count = 0;
+                var operand1 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand1 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+                var operand2 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand2 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+
+                // minus
+                var product = int.Parse(operand1) - int.Parse(operand2);
+
+                _viewModel.Omega = _viewModel.Omega.Remove(currentIndex, count);
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
+                _viewModel.Omega = _viewModel.Omega.Insert(currentIndex + 1, product.ToString() + "#");
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("divide"))
             {
                 // divide logic here
+                var currentIndex = _viewModel.Diagnostics.OmegaIndex;
+                var count = 0;
+                var operand1 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand1 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+                var operand2 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand2 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+
+                // divide
+                var product = int.Parse(operand1) / int.Parse(operand2);
+
+                _viewModel.Omega = _viewModel.Omega.Remove(currentIndex, count);
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
+                _viewModel.Omega = _viewModel.Omega.Insert(currentIndex + 1, product.ToString() + "#");
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("ifGT"))
             {
