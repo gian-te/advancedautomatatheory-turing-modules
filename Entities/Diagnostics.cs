@@ -28,11 +28,19 @@ namespace TwoWayAccepter.Entities
             set { _currentStateName = value; NotifyPropertyChanged("CurrentStateName"); }
         }
 
+        public int _omegaIndex;
+
+        public int OmegaIndex
+        {
+            get { return  _omegaIndex; }
+            set { _omegaIndex = value; NotifyPropertyChanged("OmegaIndex"); }
+        }
+
         private string _currentSymbol;
 
         public string CurrentSymbol
         {
-            get { return "Tape head at: " +_currentSymbol; }
+            get { return "Tape Head Current Symbol: " +_currentSymbol; }
             set { _currentSymbol = value; NotifyPropertyChanged("CurrentSymbol"); }
         }
 
