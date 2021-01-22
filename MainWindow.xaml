@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TwoWayAccepter"
         mc:Ignorable="d"
-        Title="Two-Way Accepter" Height="499.091" Width="791.818" WindowStartupLocation="CenterScreen">
+        Title="Turing Modules Simulator" Height="499.091" Width="791.818" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,2,13">
         <!--https://www.youtube.com/watch?v=zvyQNuuTqks&ab_channel=IAmTimCorey-->
         <DataGrid x:Name="dgStates" ItemsSource="{Binding Path=States, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}"  Margin="381,22,0,0" CanUserAddRows="True" CanUserDeleteRows="True" CanUserReorderColumns="False" CanUserSortColumns="False" CanUserResizeColumns="True" Height="385" VerticalAlignment="Top" HorizontalAlignment="Left" Width="387">

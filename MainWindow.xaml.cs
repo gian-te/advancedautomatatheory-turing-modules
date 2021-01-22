@@ -59,31 +59,64 @@ namespace TwoWayAccepter
             //_viewModel.Omega = "#1111#11#";
 
             // test case 3 - geometric series
-            _viewModel.States.Add(new State() { StateName = "1", Module = "const-1" });
-            _viewModel.States.Add(new State() { StateName = "2", Module = "shR-1" });
+            //_viewModel.States.Add(new State() { StateName = "1", Module = "const-1" });
+            //_viewModel.States.Add(new State() { StateName = "2", Module = "shR-1" });
+            //_viewModel.States.Add(new State() { StateName = "3", Module = "copy-1" });
+            //_viewModel.States.Add(new State() { StateName = "4", Module = "const-2" });
+            //_viewModel.States.Add(new State() { StateName = "5", Module = "shL-1" });
+            //_viewModel.States.Add(new State() { StateName = "6", Module = "mult" });
+            //// pattern
+            //_viewModel.States.Add(new State() { StateName = "7", Module = "shR-1" });
+            //_viewModel.States.Add(new State() { StateName = "8", Module = "copy-1" });
+            //_viewModel.States.Add(new State() { StateName = "9", Module = "const-2" });
+            //_viewModel.States.Add(new State() { StateName = "10", Module = "shL-1" });
+            //_viewModel.States.Add(new State() { StateName = "11", Module = "mult" });
+            ////
+            //_viewModel.States.Add(new State() { StateName = "12", Module = "shR-1" });
+            //_viewModel.States.Add(new State() { StateName = "13", Module = "copy-1" });
+            //_viewModel.States.Add(new State() { StateName = "14", Module = "const-2" });
+            //_viewModel.States.Add(new State() { StateName = "15", Module = "shL-1" });
+            //_viewModel.States.Add(new State() { StateName = "16", Module = "mult" });
+            ////
+            //_viewModel.States.Add(new State() { StateName = "17", Module = "shR-1" });
+            //_viewModel.States.Add(new State() { StateName = "18", Module = "copy-1" });
+            //_viewModel.States.Add(new State() { StateName = "19", Module = "const-2" });
+            //_viewModel.States.Add(new State() { StateName = "20", Module = "shL-1" });
+            //_viewModel.States.Add(new State() { StateName = "21", Module = "mult" });
+            ////
+            //_viewModel.States.Add(new State() { StateName = "22", Module = "shR-1" });
+            //_viewModel.States.Add(new State() { StateName = "23", Module = "copy-1" });
+            //_viewModel.States.Add(new State() { StateName = "24", Module = "const-2" });
+            //_viewModel.States.Add(new State() { StateName = "25", Module = "shL-1" });
+            //_viewModel.States.Add(new State() { StateName = "26 ", Module = "mult" });
+            //_viewModel.Omega = "####";
+
+
+            // exam
+            _viewModel.States.Add(new State() { StateName = "1", Module = "shR-1" });
+            _viewModel.States.Add(new State() { StateName = "2", Module = "const-1" });
             _viewModel.States.Add(new State() { StateName = "3", Module = "copy-1" });
-            _viewModel.States.Add(new State() { StateName = "4", Module = "const-2" });
-            _viewModel.States.Add(new State() { StateName = "5", Module = "shL-1" });
-            _viewModel.States.Add(new State() { StateName = "6", Module = "mult" });
-            // pattern
-            _viewModel.States.Add(new State() { StateName = "7", Module = "shR-1" });
-            _viewModel.States.Add(new State() { StateName = "8", Module = "copy-1" });
-            _viewModel.States.Add(new State() { StateName = "9", Module = "const-2" });
+            //_viewModel.States.Add(new State() { StateName = "4", Module = "shR-1" });
+            _viewModel.States.Add(new State() { StateName = "4", Module = "shL-1" });
+            _viewModel.States.Add(new State() { StateName = "5", Module = "minus" });
+            _viewModel.States.Add(new State() { StateName = "6", Module = "shR-1" });
+            _viewModel.States.Add(new State() { StateName = "7", Module = "copy-1" });
+
+            _viewModel.States.Add(new State() { StateName = "8", Module = "const-1" });
+            _viewModel.States.Add(new State() { StateName = "9", Module = "copy-1" });
             _viewModel.States.Add(new State() { StateName = "10", Module = "shL-1" });
-            _viewModel.States.Add(new State() { StateName = "11", Module = "mult" });
-            //
-            _viewModel.States.Add(new State() { StateName = "12", Module = "shR-1" });
-            _viewModel.States.Add(new State() { StateName = "13", Module = "copy-1" });
-            _viewModel.States.Add(new State() { StateName = "14", Module = "const-2" });
+            _viewModel.States.Add(new State() { StateName = "11", Module = "ifEQ-16" });
+
+            _viewModel.States.Add(new State() { StateName = "12", Module = "copy-1" });
+                                                              
+            _viewModel.States.Add(new State() { StateName = "13", Module = "shL-2" });
+            _viewModel.States.Add(new State() { StateName = "14", Module = "ifEQ-2" });
             _viewModel.States.Add(new State() { StateName = "15", Module = "shL-1" });
-            _viewModel.States.Add(new State() { StateName = "16", Module = "mult" });
-            //
-            _viewModel.States.Add(new State() { StateName = "17", Module = "shR-1" });
-            _viewModel.States.Add(new State() { StateName = "18", Module = "copy-1" });
-            _viewModel.States.Add(new State() { StateName = "19", Module = "const-2" });
-            _viewModel.States.Add(new State() { StateName = "20", Module = "shL-1" });
-            _viewModel.States.Add(new State() { StateName = "21", Module = "mult" });
-            _viewModel.Omega = "####";
+            _viewModel.States.Add(new State() { StateName = "16", Module = "const-1" });
+            _viewModel.States.Add(new State() { StateName = "17", Module = "shL-1" });
+            _viewModel.States.Add(new State() { StateName = "18", Module = "ifEQ-19" });
+            _viewModel.States.Add(new State() { StateName = "19", Module = "halt" });
+            _viewModel.Omega = "#5#";
 
             _viewModel.InitialState = stateCounter.ToString();
             _viewModel.Diagnostics.CurrentSymbol = _viewModel.Omega[0].ToString();
@@ -309,7 +342,7 @@ namespace TwoWayAccepter
         private void EvaluateNextState(string symbol)
         {
             var nextPossibleStates = new List<State>();
-
+            bool overrideCounter = false;
             // todo: handle how to transition to next state if current state has many transitions.
             nextPossibleStates = _viewModel.States.Where(s => s.StateName == _viewModel.Diagnostics.CurrentState.StateName).ToList();
             //var targetStateName = nextPossibleStates.Where(state => state.K == symbol).Select(s => s.DestinationState).FirstOrDefault();
@@ -340,7 +373,7 @@ namespace TwoWayAccepter
             {
                 var value = _viewModel.Diagnostics.CurrentState.Module.Split('-')[1];
                 //for (int j = 0; j < int.Parse(value);)
-                 
+
                 for (int j = 0; j < _viewModel.Omega.Length;)
                 {
                     _viewModel.Diagnostics.OmegaIndex++;
@@ -394,7 +427,7 @@ namespace TwoWayAccepter
                 _viewModel.Omega = _viewModel.Omega.Insert(_viewModel.Diagnostics.OmegaIndex, symbols + "#");
                 _viewModel.Diagnostics.OmegaIndex--;
                 _viewModel.Diagnostics.OmegaIndex += symbols.Length + 1;
-                
+
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("move"))
             {
@@ -443,7 +476,7 @@ namespace TwoWayAccepter
                 while (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex + 1].ToString() != "#")
                 {
                     _viewModel.Omega = _viewModel.Omega.Remove(_viewModel.Diagnostics.OmegaIndex + 1, 1);
-                    
+
                 }
                 _viewModel.Omega = _viewModel.Omega.Insert(_viewModel.Diagnostics.OmegaIndex + 1, blocksToBeMoved);
             }
@@ -677,14 +710,76 @@ namespace TwoWayAccepter
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("ifEQ"))
             {
-                // ifEqual logic here
+                var stateNumber = _viewModel.Diagnostics.CurrentState.Module.Split('-')[1];
+                // ifEQ logic here
+                var currentIndex = _viewModel.Diagnostics.OmegaIndex;
+                var count = 0;
+                var operand1 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand1 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+                var operand2 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand2 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+
+                // ifEQ
+                var isEqual = int.Parse(operand1) == int.Parse(operand2);
+                if (isEqual)
+                {
+                    stateCounter = int.Parse(stateNumber);
+                    overrideCounter = true;
+                }
+                _viewModel.Omega = _viewModel.Omega.Remove(currentIndex, count);
+                _viewModel.Omega = _viewModel.Omega.Insert(currentIndex + 1, "#");
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
+
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("goto"))
             {
                 // goto logic here
             }
+            else if (_viewModel.Diagnostics.CurrentState.Module.Contains("halt"))
+            {
+                MessageBox.Show("Machine has achieved a halt state!");
+            }
             _viewModel.Diagnostics.CurrentSymbol = _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
-            stateCounter++;
+
+            // for cases where you jump to a state
+            if (!overrideCounter)
+            {
+                stateCounter++;
+            }
             State nextState = _viewModel.States.Where(s => s.StateName == stateCounter.ToString()).FirstOrDefault();
 
             _viewModel.Diagnostics.CurrentState = nextState;
@@ -702,7 +797,7 @@ namespace TwoWayAccepter
 
         private void Reset(object sender, RoutedEventArgs e)
         {
-            _viewModel.Diagnostics.OmegaIndex = 1;
+            _viewModel.Diagnostics.OmegaIndex = 0;
             _viewModel.Diagnostics.CurrentSymbol = !string.IsNullOrEmpty(_viewModel.Omega) ? _viewModel.Omega[0].ToString() : "";
             _viewModel.Diagnostics.CurrentState = null;
             _viewModel.Diagnostics.ProcessedSymbols = "";
