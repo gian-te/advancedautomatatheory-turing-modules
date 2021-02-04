@@ -739,8 +739,8 @@ namespace TwoWayAccepter
 
 
                 // ifGT
-                var isLessThan = int.Parse(operand1) > int.Parse(operand2);
-                if (isLessThan)
+                var isGreaterThan = int.Parse(operand1) > int.Parse(operand2);
+                if (isGreaterThan)
                 {
                     stateCounter = int.Parse(stateNumber);
                     overrideCounter = true;
