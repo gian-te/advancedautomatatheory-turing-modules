@@ -695,18 +695,228 @@ namespace TwoWayAccepter
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("ifGT"))
             {
                 // gt logic here
+                // lt logic here
+                var stateNumber = _viewModel.Diagnostics.CurrentState.Module.Split('-')[1];
+                var currentIndex = _viewModel.Diagnostics.OmegaIndex;
+                var count = 0;
+                var operand1 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand1 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+                var operand2 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand2 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+
+                // ifGT
+                var isLessThan = int.Parse(operand1) > int.Parse(operand2);
+                if (isLessThan)
+                {
+                    stateCounter = int.Parse(stateNumber);
+                    overrideCounter = true;
+                }
+                _viewModel.Omega = _viewModel.Omega.Remove(currentIndex, count);
+                _viewModel.Omega = _viewModel.Omega.Insert(currentIndex + 1, "#");
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("ifGE"))
             {
                 // ge logic here
+                // lt logic here
+                var stateNumber = _viewModel.Diagnostics.CurrentState.Module.Split('-')[1];
+                var currentIndex = _viewModel.Diagnostics.OmegaIndex;
+                var count = 0;
+                var operand1 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand1 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+                var operand2 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand2 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+
+                // ifGE
+                var isGreaterThanOrEqual = int.Parse(operand1) >= int.Parse(operand2);
+                if (isGreaterThanOrEqual)
+                {
+                    stateCounter = int.Parse(stateNumber);
+                    overrideCounter = true;
+                }
+                _viewModel.Omega = _viewModel.Omega.Remove(currentIndex, count);
+                _viewModel.Omega = _viewModel.Omega.Insert(currentIndex + 1, "#");
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("ifLT"))
             {
                 // lt logic here
+                var stateNumber = _viewModel.Diagnostics.CurrentState.Module.Split('-')[1];
+                var currentIndex = _viewModel.Diagnostics.OmegaIndex;
+                var count = 0;
+                var operand1 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand1 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+                var operand2 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand2 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+
+                // ifLT
+                var isLessThan = int.Parse(operand1) < int.Parse(operand2);
+                if (isLessThan)
+                {
+                    stateCounter = int.Parse(stateNumber);
+                    overrideCounter = true;
+                }
+                _viewModel.Omega = _viewModel.Omega.Remove(currentIndex, count);
+                _viewModel.Omega = _viewModel.Omega.Insert(currentIndex + 1, "#");
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("ifLE"))
             {
                 // le logic here
+                var stateNumber = _viewModel.Diagnostics.CurrentState.Module.Split('-')[1];
+                var currentIndex = _viewModel.Diagnostics.OmegaIndex;
+                var count = 0;
+                var operand1 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand1 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+                var operand2 = "";
+                for (int j = 0; j < _viewModel.Omega.Length;)
+                {
+                    _viewModel.Diagnostics.OmegaIndex++;
+                    count++;
+                    if (_viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString() == "#")
+                    {
+                        j++;
+                    }
+                    else
+                    {
+                        operand2 += _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
+                    }
+                    if (1 == j)
+                    {
+                        break;
+                    }
+                }
+
+
+                // ifLE
+                var isLessthanOrEqual = int.Parse(operand1) <= int.Parse(operand2);
+                if (isLessthanOrEqual)
+                {
+                    stateCounter = int.Parse(stateNumber);
+                    overrideCounter = true;
+                }
+                _viewModel.Omega = _viewModel.Omega.Remove(currentIndex, count);
+                _viewModel.Omega = _viewModel.Omega.Insert(currentIndex + 1, "#");
+                _viewModel.Diagnostics.OmegaIndex = currentIndex;
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("ifEQ"))
             {
@@ -768,10 +978,13 @@ namespace TwoWayAccepter
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("goto"))
             {
                 // goto logic here
+                var stateNumber = _viewModel.Diagnostics.CurrentState.Module.Split('-')[1];
+                stateCounter = int.Parse(stateNumber);
+                overrideCounter = true;
             }
             else if (_viewModel.Diagnostics.CurrentState.Module.Contains("halt"))
             {
-                MessageBox.Show("Machine has achieved a halt state!");
+                MessageBox.Show("The machine has reached a halt state!");
             }
             _viewModel.Diagnostics.CurrentSymbol = _viewModel.Omega[_viewModel.Diagnostics.OmegaIndex].ToString();
 
