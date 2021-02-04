@@ -56,6 +56,8 @@ namespace TwoWayAccepter
             //_viewModel.States.Add(new State() { StateName = "2", Module = "copy-2" });
             //_viewModel.States.Add(new State() { StateName = "3", Module = "shL-2" });
             //_viewModel.States.Add(new State() { StateName = "4", Module = "move 1,2" });
+            //_viewModel.States.Add(new State() { StateName = "5", Module = "halt" });
+
             //_viewModel.Omega = "#1111#11#";
 
             // test case 3 - geometric series
@@ -88,7 +90,9 @@ namespace TwoWayAccepter
             //_viewModel.States.Add(new State() { StateName = "23", Module = "copy-1" });
             //_viewModel.States.Add(new State() { StateName = "24", Module = "const-2" });
             //_viewModel.States.Add(new State() { StateName = "25", Module = "shL-1" });
-            //_viewModel.States.Add(new State() { StateName = "26 ", Module = "mult" });
+            //_viewModel.States.Add(new State() { StateName = "26", Module = "mult" });
+            //_viewModel.States.Add(new State() { StateName = "27", Module = "halt" });
+
             //_viewModel.Omega = "####";
 
 
@@ -108,7 +112,7 @@ namespace TwoWayAccepter
             _viewModel.States.Add(new State() { StateName = "11", Module = "ifEQ-16" });
 
             _viewModel.States.Add(new State() { StateName = "12", Module = "copy-1" });
-                                                              
+
             _viewModel.States.Add(new State() { StateName = "13", Module = "shL-2" });
             _viewModel.States.Add(new State() { StateName = "14", Module = "ifEQ-2" });
             _viewModel.States.Add(new State() { StateName = "15", Module = "shL-1" });
